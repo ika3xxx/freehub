@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>FreeHub - Bảng điều khiển Nhà tuyển dụng</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    #profile-dropdown-menu {
+      top: 100%;
+      margin-top: 0.5rem;
+      min-width: 16rem;
+    }
+  </style>
+</head>
+<body class="bg-indigo-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center relative">
+        <a class="flex items-center space-x-2" href="../index.html">
+          <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40" />
+          <span class="text-indigo-600 font-bold text-xl select-none">FreeHub</span>
+        </a>
+        <nav class="flex space-x-8 font-semibold text-gray-700">
+          <a class="hover:text-indigo-600 transition" href="#dashboard">Bảng điều khiển</a>
+          <a class="hover:text-indigo-600 transition" href="#post-project">Đăng dự án</a>
+          <a class="hover:text-indigo-600 transition" href="#manage-projects">Quản lý dự án</a>
+          <a class="hover:text-indigo-600 transition" href="#messages">Tin nhắn</a>
+          <a class="hover:text-indigo-600 transition" href="client-profile.html">Hồ sơ</a>
+        </nav>
+        <div class="flex justify-end flex-1 max-w-xs" id="auth-buttons">
+          <div class="relative w-full">
+            <button id="profile-dropdown-button" aria-haspopup="true" aria-expanded="false" class="flex items-center space-x-3 w-full justify-center focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md hover:ring-indigo-600 transition" type="button">
+              <img id="header-avatar" alt="Ảnh đại diện nhà tuyển dụng" src="https://storage.googleapis.com/a1aa/image/80314c24-2a8d-41aa-9e23-a77f15e64bd6.jpg" class="w-10 h-10 rounded-full object-cover shadow-md" width="40" height="40" />
+              <span class="text-indigo-600 font-semibold text-lg select-none" id="header-username">Khách hàng</span>
+              <i class="fas fa-chevron-down text-indigo-600"></i>
+            </button>
+            <div id="profile-dropdown-menu" class="hidden absolute left-0 right-0 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="profile-dropdown-button" tabindex="-1">
+              <div class="px-4 py-3 border-b border-indigo-100">
+                <p class="text-sm text-gray-500">Đăng nhập với tài khoản</p>
+                <p class="text-indigo-700 font-semibold truncate" id="dropdown-username">Khách hàng</p>
+              </div>
+              <a href="client-profile.html" class="block px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-100 transition rounded-t-md flex items-center space-x-2" role="menuitem" tabindex="0">
+                <i class="fas fa-user"></i>
+                <span>Xem hồ sơ</span>
+              </a>
+              <button id="logout-button" class="w-full text-left px-4 py-3 text-red-600 font-semibold hover:bg-red-100 transition rounded-b-md flex items-center space-x-2 focus:outline-none" type="button" role="menuitem" tabindex="0">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Đăng xuất</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Dashboard -->
+    <section id="dashboard" class="mb-16">
+      <h1 class="text-4xl font-extrabold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Bảng điều khiển Nhà tuyển dụng</h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
+          <i class="fas fa-briefcase fa-3x text-indigo-600 mb-4"></i>
+          <h2 class="text-2xl font-bold text-indigo-800">3</h2>
+          <p class="text-gray-600">Dự án đang hoạt động</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
+          <i class="fas fa-user-check fa-3x text-indigo-600 mb-4"></i>
+          <h2 class="text-2xl font-bold text-indigo-800">10</h2>
+          <p class="text-gray-600">Ứng viên mới</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
+          <i class="fas fa-bell fa-3x text-indigo-600 mb-4"></i>
+          <h2 class="text-2xl font-bold text-indigo-800">5</h2>
+          <p class="text-gray-600">Thông báo mới</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Đăng dự án mới -->
+    <section id="post-project" class="mb-16">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Đăng dự án mới</h2>
+      <div class="bg-white rounded-lg shadow p-6">
+        <form id="project-form" class="space-y-6" novalidate>
+          <div>
+            <label for="project-title" class="block text-gray-700 font-semibold mb-2">Tiêu đề dự án <span class="text-red-600">*</span></label>
+            <input type="text" id="project-title" name="project-title" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Nhập tiêu đề dự án" />
+            <p class="mt-2 text-base text-red-600 hidden" id="error-title">Vui lòng nhập tiêu đề dự án.</p>
+          </div>
+          <div>
+            <label for="project-description" class="block text-gray-700 font-semibold mb-2">Mô tả dự án <span class="text-red-600">*</span></label>
+            <textarea id="project-description" name="project-description" rows="5" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 resize-y" placeholder="Mô tả chi tiết về dự án"></textarea>
+            <p class="mt-2 text-base text-red-600 hidden" id="error-description">Vui lòng nhập mô tả dự án.</p>
+          </div>
+          <div>
+            <label for="project-skills" class="block text-gray-700 font-semibold mb-2">Kỹ năng yêu cầu <span class="text-red-600">*</span></label>
+            <input type="text" id="project-skills" name="project-skills" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Nhập kỹ năng, phân cách bằng dấu phẩy" />
+            <p class="mt-2 text-base text-red-600 hidden" id="error-skills">Vui lòng nhập ít nhất một kỹ năng.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="budget-min" class="block text-gray-700 font-semibold mb-2">Ngân sách tối thiểu (USD) <span class="text-red-600">*</span></label>
+              <input type="number" id="budget-min" name="budget-min" min="0" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Ví dụ: 100" />
+              <p class="mt-2 text-base text-red-600 hidden" id="error-budget-min">Vui lòng nhập ngân sách tối thiểu hợp lệ.</p>
+            </div>
+            <div>
+              <label for="budget-max" class="block text-gray-700 font-semibold mb-2">Ngân sách tối đa (USD) <span class="text-red-600">*</span></label>
+              <input type="number" id="budget-max" name="budget-max" min="0" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" placeholder="Ví dụ: 500" />
+              <p class="mt-2 text-base text-red-600 hidden" id="error-budget-max">Ngân sách tối đa phải lớn hơn hoặc bằng tối thiểu.</p>
+            </div>
+          </div>
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md px-6 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600">Đăng dự án</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Quản lý các dự án đã đăng -->
+    <section id="manage-projects" class="mb-16">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Quản lý các dự án đã đăng</h2>
+      <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-indigo-100">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Tiêu đề</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Ngân sách</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Ứng viên</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Trạng thái</th>
+              <th scope="col" class="relative px-6 py-3"><span class="sr-only">Hành động</span></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-900">Phát triển ứng dụng Mobile</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">$1,000 - $2,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">5</td>
+              <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Đang hoạt động</span></td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                <button class="text-indigo-600 hover:text-indigo-900 focus:outline-none view-applicants" data-project-id="1" aria-label="Xem ứng viên dự án Phát triển ứng dụng Mobile">Xem ứng viên</button>
+                <button class="text-red-600 hover:text-red-900 focus:outline-none delete-project" data-project-id="1" aria-label="Xóa dự án Phát triển ứng dụng Mobile"><i class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-900">Thiết kế website bán hàng</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">$500 - $800</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">3</td>
+              <td class="px-6 py-4 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Chờ duyệt</span></td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                <button class="text-indigo-600 hover:text-indigo-900 focus:outline-none view-applicants" data-project-id="2" aria-label="Xem ứng viên dự án Thiết kế website bán hàng">Xem ứng viên</button>
+                <button class="text-red-600 hover:text-red-900 focus:outline-none delete-project" data-project-id="2" aria-label="Xóa dự án Thiết kế website bán hàng"><i class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Xem và chấp nhận ứng viên (Modal) -->
+    <div aria-hidden="true" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" id="applicants-modal">
+      <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full mx-auto p-6 relative">
+        <button aria-label="Đóng cửa sổ ứng viên" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none" id="applicants-modal-close" type="button">
+          <i class="fas fa-times fa-lg"></i>
+        </button>
+        <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center">Danh sách ứng viên</h2>
+        <div class="space-y-4 max-h-96 overflow-y-auto">
+          <div class="border-b border-gray-200 pb-4">
+            <p class="text-indigo-700 font-semibold">Freelancer</p>
+            <p class="text-gray-600 line-clamp-2">Lập trình viên React.js với 5 năm kinh nghiệm, đã hoàn thành nhiều dự án tương tự.</p>
+            <div class="flex space-x-2 mt-2">
+              <button class="text-indigo-600 hover:text-indigo-900 focus:outline-none" data-applicant-id="1" aria-label="Xem hồ sơ Freelancer">Xem hồ sơ</button>
+              <button class="bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700 accept-applicant" data-applicant-id="1" aria-label="Chấp nhận Freelancer">Chấp nhận</button>
+            </div>
+          </div>
+          <div class="border-b border-gray-200 pb-4">
+            <p class="text-indigo-700 font-semibold">Lê Thị Hoa</p>
+            <p class="text-gray-600 line-clamp-2">Chuyên gia thiết kế giao diện với portfolio ấn tượng.</p>
+            <div class="flex space-x-2 mt-2">
+              <button class="text-indigo-600 hover:text-indigo-900 focus:outline-none" data-applicant-id="2" aria-label="Xem hồ sơ Lê Thị Hoa">Xem hồ sơ</button>
+              <button class="bg-green-600 text-white px-4 py-1 rounded-md hover:bg-green-700 accept-applicant" data-applicant-id="2" aria-label="Chấp nhận Lê Thị Hoa">Chấp nhận</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lịch sử thuê -->
+    <section id="hiring-history" class="mb-16">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Lịch sử thuê</h2>
+      <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-indigo-100">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Freelancer</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Dự án</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Ngân sách</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-semibold text-indigo-700 uppercase tracking-wider">Ngày hoàn thành</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-900">Freelancer</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">Phát triển web thương mại</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">$1,500</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">01/05/2025</td>
+            </tr>
+            <tr class="hover:bg-indigo-50 transition">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-900">Trần Thị Bình</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">Thiết kế logo</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">$300</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-indigo-700">15/04/2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Đánh giá freelancer -->
+    <section id="rate-freelancer" class="mb-16">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Đánh giá Freelancer</h2>
+      <div class="bg-white rounded-lg shadow p-6">
+        <form id="rating-form" class="space-y-6" novalidate>
+          <div>
+            <label for="freelancer-name" class="block text-gray-700 font-semibold mb-2">Freelancer <span class="text-red-600">*</span></label>
+            <select id="freelancer-name" name="freelancer-name" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+              <option value="" disabled selected>Chọn freelancer</option>
+              <option value="Freelancer">Freelancer</option>
+              <option value="Trần Thị Bình">Trần Thị Bình</option>
+            </select>
+            <p class="mt-2 text-base text-red-600 hidden" id="error-freelancer">Vui lòng chọn freelancer.</p>
+          </div>
+          <div>
+            <label for="rating" class="block text-gray-700 font-semibold mb-2">Điểm đánh giá <span class="text-red-600">*</span></label>
+            <div class="flex space-x-1 text-yellow-400">
+              <i class="fas fa-star cursor-pointer rating-star" data-value="1"></i>
+              <i class="fas fa-star cursor-pointer rating-star" data-value="2"></i>
+              <i class="fas fa-star cursor-pointer rating-star" data-value="3"></i>
+              <i class="fas fa-star cursor-pointer rating-star" data-value="4"></i>
+              <i class="fas fa-star cursor-pointer rating-star" data-value="5"></i>
+            </div>
+            <input type="hidden" id="rating" name="rating" required />
+            <p class="mt-2 text-base text-red-600 hidden" id="error-rating">Vui lòng chọn điểm đánh giá.</p>
+          </div>
+          <div>
+            <label for="review" class="block text-gray-700 font-semibold mb-2">Nhận xét <span class="text-red-600">*</span></label>
+            <textarea id="review" name="review" rows="4" required class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 resize-y" placeholder="Nhận xét về freelancer"></textarea>
+            <p class="mt-2 text-base text-red-600 hidden" id="error-review">Vui lòng nhập nhận xét.</p>
+          </div>
+          <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md px-6 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600">Gửi đánh giá</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tin nhắn / Thông báo -->
+    <section id="messages" class="mb-16">
+      <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Tin nhắn / Thông báo</h2>
+      <div class="bg-white rounded-lg shadow p-6 space-y-4">
+        <div class="flex items-center space-x-4 border-b border-gray-200 pb-4">
+          <i class="fas fa-envelope text-indigo-600"></i>
+          <div>
+            <p class="text-indigo-700 font-semibold">Freelancer</p>
+            <p class="text-gray-600 line-clamp-1">Tôi đã hoàn thành giai đoạn 1 của dự án Mobile, xin vui lòng kiểm tra...</p>
+            <p class="text-sm text-gray-500">14:00, 16/06/2025</p>
+          </div>
+          <button class="ml-auto text-indigo-600 hover:text-indigo-900" aria-label="Xem tin nhắn từ Freelancer">Xem</button>
+        </div>
+        <div class="flex items-center space-x-4 border-b border-gray-200 pb-4">
+          <i class="fas fa-bell text-indigo-600"></i>
+          <div>
+            <p class="text-indigo-700 font-semibold">Hệ thống</p>
+            <p class="text-gray-600 line-clamp-1">Dự án của bạn đã được duyệt thành công.</p>
+            <p class="text-sm text-gray-500">10:00, 16/06/2025</p>
+          </div>
+          <button class="text-indigo-600 hover:text-indigo-900" aria-label="Xem thông báo hệ thống">Xem</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

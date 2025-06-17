@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>FreeHub - Hồ sơ Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+    }
+    main::-webkit-scrollbar {
+      width: 8px;
+    }
+    main::-webkit-scrollbar-track {
+      background: #f0f4ff;
+    }
+    main::-webkit-scrollbar-thumb {
+      background-color: #6366f1;
+      border-radius: 10px;
+      border: 2px solid #f0f4ff;
+    }
+    #profile-dropdown-menu {
+      top: 100%;
+      margin-top: 0.5rem;
+      min-width: 12rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center relative">
+        <a class="flex items-center space-x-2" href="../index.html">
+          <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40" />
+          <span class="text-indigo-600 font-bold text-xl select-none">FreeHub</span>
+        </a>
+        <nav class="flex space-x-8 font-semibold text-gray-700">
+          <a class="hover:text-indigo-600 transition" href="../index.html">Trang chủ</a>
+          <a class="hover:text-indigo-600 transition" href="viec-lam.html">Việc làm</a>
+          <a class="hover:text-indigo-600 transition" href="freelancer.html">Freelancer</a>
+          <a class="hover:text-indigo-600 transition" href="dang-du-an.html">Đăng dự án</a>
+          <a class="hover:text-indigo-600 transition" href="admin-profile.html">Hồ sơ</a>
+        </nav>
+        <div class="flex justify-end flex-1 max-w-xs" id="auth-buttons">
+          <div class="relative w-full">
+            <button id="profile-dropdown-button" aria-haspopup="true" aria-expanded="false" class="flex items-center space-x-3 w-full justify-center focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded-md hover:ring-indigo-600 transition" type="button">
+              <img id="header-avatar" alt="Ảnh đại diện Admin" src="https://storage.googleapis.com/a1aa/image/80314c24-2a8d-41aa-9e23-a77f15e64bd6.jpg" class="w-10 h-10 rounded-full object-cover shadow-md" width="40" height="40" />
+              <span class="text-indigo-600 font-semibold text-lg select-none" id="header-username">Admin</span>
+              <i class="fas fa-chevron-down text-indigo-600"></i>
+            </button>
+            <div id="profile-dropdown-menu" class="hidden absolute left-0 right-0 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="profile-dropdown-button" tabindex="-1">
+              <a href="admin-profile.html" class="block px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-100 transition rounded-t-md flex items-center space-x-2" role="menuitem" tabindex="0">
+                <i class="fas fa-user"></i>
+                <span>Xem hồ sơ</span>
+              </a>
+              <a href="admin.html" class="block px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-100 transition flex items-center space-x-2" role="menuitem" tabindex="0">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Bảng điều khiển</span>
+              </a>
+              <button id="logout-button" class="w-full text-left px-4 py-3 text-red-600 font-semibold hover:bg-red-100 transition rounded-b-md flex items-center space-x-2 focus:outline-none" type="button" role="menuitem" tabindex="0">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Đăng xuất</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Content -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 bg-white rounded-lg shadow-md mt-10 mb-20">
+    <section class="flex flex-col sm:flex-row gap-10">
+      <!-- Left panel -->
+      <aside class="sm:w-1/3 flex flex-col items-center text-center bg-indigo-50 rounded-lg p-8 shadow-inner">
+        <div class="relative w-36 h-36 rounded-full overflow-hidden shadow-lg ring-4 ring-indigo-300">
+          <img alt="Ảnh đại diện Admin" src="https://storage.googleapis.com/a1aa/image/80314c24-2a8d-41aa-9e23-a77f15e64bd6.jpg" class="object-cover w-full h-full" width="144" height="144" id="profile-avatar" />
+          <div id="avatar-preview-overlay" class="absolute inset-0 bg-indigo-700 bg-opacity-60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer rounded-full text-white text-sm font-semibold" title="Nhấp để thay đổi ảnh đại diện">
+            Thay đổi ảnh
+          </div>
+        </div>
+        <h1 class="mt-6 text-3xl font-bold text-indigo-800 tracking-wide" id="profile-name">Admin</h1>
+        <p class="mt-2 text-indigo-600 font-semibold text-xl" id="profile-title">Quản trị viên hệ thống</p>
+      </aside>
+
+      <!-- Right panel -->
+      <section class="sm:w-2/3">
+        <h2 class="text-2xl font-bold text-indigo-700 mb-6 border-b border-indigo-300 pb-2">Thông tin cá nhân</h2>
+        <form id="profile-form" class="space-y-6 max-w-xl" autocomplete="off">
+          <div>
+            <label for="full-name" class="block text-gray-700 font-semibold mb-1">Họ và tên</label>
+            <input type="text" id="full-name" name="fullName" required value="Admin" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" />
+          </div>
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold mb-1">Email</label>
+            <input type="email" id="email" name="email" required value="admin@freehub.vn" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" />
+          </div>
+          <div>
+            <label for="phone" class="block text-gray-700 font-semibold mb-1">Số điện thoại</label>
+            <input type="tel" id="phone" name="phone" value="+84 987 654 321" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" />
+          </div>
+          <div>
+            <label for="bio" class="block text-gray-700 font-semibold mb-1">Giới thiệu bản thân</label>
+            <textarea id="bio" name="bio" rows="4" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 resize-none">Quản trị viên hệ thống FreeHub, phụ trách giám sát và duy trì hoạt động của nền tảng.</textarea>
+          </div>
+          <div>
+            <label for="avatar" class="block text-gray-700 font-semibold mb-1">Ảnh đại diện</label>
+            <input type="file" id="avatar" name="avatar" accept="image/*" class="w-full text-gray-700" />
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button type="reset" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold rounded-md px-6 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400">Hủy</button>
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md px-6 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600">Lưu thay đổi</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

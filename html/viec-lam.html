@@ -1,0 +1,823 @@
+<html lang="vi">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>FreeHub - Việc làm</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gradient-to-b from-indigo-50 via-white to-indigo-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+     <a class="flex items-center space-x-2" href="../index.html">
+      <img
+        alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng"
+        class="h-10 w-10 rounded-md"
+        height="40"
+        src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg"
+        width="40"
+      />
+      <span class="text-indigo-600 font-bold text-xl select-none">FreeHub</span>
+     </a>
+     <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+      <a class="hover:text-indigo-600 transition" href="../index.html">Trang chủ</a>
+      <a
+        class="hover:text-indigo-600 transition text-indigo-600 font-bold"
+        href="#"
+        aria-current="page"
+        >Việc làm</a
+      >
+      <a class="hover:text-indigo-600 transition" href="./freelancer.html">Freelancer</a>
+      <a class="hover:text-indigo-600 transition" href="./dang-du-an.html">Đăng dự án</a>
+     </nav>
+     <div class="hidden md:flex space-x-4 justify-center flex-1 max-w-xs" id="auth-buttons">
+      <button
+        id="login-button"
+        class="text-indigo-600 font-semibold hover:text-indigo-800 transition border border-indigo-600 rounded-md px-4 py-1.5 flex items-center space-x-1 justify-center w-full focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        type="button"
+      >
+       <i class="fas fa-sign-in-alt"></i>
+       <span>Đăng nhập</span>
+      </button>
+      <button
+        id="register-button"
+        class="bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition rounded-md px-4 py-1.5 flex items-center space-x-1 justify-center w-full focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        type="button"
+      >
+       <i class="fas fa-user-plus"></i>
+       <span>Đăng ký</span>
+      </button>
+     </div>
+     <button
+       aria-label="Mở menu"
+       class="md:hidden text-indigo-600 hover:text-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+       id="mobile-menu-button"
+     >
+      <i class="fas fa-bars fa-lg"></i>
+     </button>
+    </div>
+   </div>
+   <!-- Mobile menu -->
+   <nav
+     aria-label="Menu di động"
+     class="md:hidden bg-white border-t border-indigo-100 hidden"
+     id="mobile-menu"
+   >
+    <a
+      class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2"
+      href="../index.html"
+    >
+     <i class="fas fa-home"></i>
+     <span>Trang chủ</span>
+    </a>
+    <a
+      class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2"
+      href="#"
+    >
+     <i class="fas fa-briefcase"></i>
+     <span>Việc làm</span>
+    </a>
+    <a
+      class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2"
+      href="./freelancer.html"
+    >
+     <i class="fas fa-user-friends"></i>
+     <span>Freelancer</span>
+    </a>
+    <a
+      class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2"
+      href="./dang-du-an.html"
+    >
+     <i class="fas fa-plus-circle"></i>
+     <span>Đăng dự án</span>
+    </a>
+    <div id="mobile-auth-buttons">
+     <button
+       id="mobile-login-button"
+       class="w-full text-left px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+       type="button"
+     >
+      <i class="fas fa-sign-in-alt"></i>
+      <span>Đăng nhập</span>
+     </button>
+     <button
+       id="mobile-register-button"
+       class="w-full text-left px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-50 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+       type="button"
+     >
+      <i class="fas fa-user-plus"></i>
+      <span>Đăng ký</span>
+     </button>
+    </div>
+   </nav>
+  </header>
+  <!-- Modal đăng nhập -->
+  <div
+    aria-hidden="true"
+    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50"
+    id="login-modal"
+  >
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full mx-auto p-6 relative">
+    <button
+      aria-label="Đóng cửa sổ đăng nhập"
+      class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+      id="login-modal-close"
+      type="button"
+    >
+     <i class="fas fa-times fa-lg"></i>
+    </button>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center">
+     Đăng nhập FreeHub
+    </h2>
+    <form id="login-form" class="space-y-5" novalidate>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="email">
+       Email
+      </label>
+      <input
+        autocomplete="email"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="email"
+        name="email"
+        placeholder="email@example.com"
+        required=""
+        type="email"
+      />
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="password">
+       Mật khẩu
+      </label>
+      <input
+        autocomplete="current-password"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="password"
+        name="password"
+        placeholder="••••••••"
+        required=""
+        type="password"
+      />
+     </div>
+     <div class="flex items-center justify-between">
+      <label class="inline-flex items-center text-gray-700">
+       <input
+         class="form-checkbox h-4 w-4 text-indigo-600"
+         type="checkbox"
+         name="remember"
+         id="remember"
+       />
+       <span class="ml-2 text-sm">Ghi nhớ đăng nhập</span>
+      </label>
+      <a class="text-indigo-600 hover:underline text-sm" href="#">
+       Quên mật khẩu?
+      </a>
+     </div>
+     <button
+       class="w-full bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition"
+       type="submit"
+     >
+      Đăng nhập
+     </button>
+    </form>
+   </div>
+  </div>
+  <!-- Modal đăng ký -->
+  <div
+    aria-hidden="true"
+    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50"
+    id="register-modal"
+  >
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full mx-auto p-6 relative">
+    <button
+      aria-label="Đóng cửa sổ đăng ký"
+      class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none"
+      id="register-modal-close"
+      type="button"
+    >
+     <i class="fas fa-times fa-lg"></i>
+    </button>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center">
+     Đăng ký tài khoản FreeHub
+    </h2>
+    <form id="register-form" class="space-y-5" novalidate>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-name">
+       Họ và tên
+      </label>
+      <input
+        autocomplete="name"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="reg-name"
+        name="name"
+        placeholder="Nguyễn Văn A"
+        required=""
+        type="text"
+      />
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-email">
+       Email
+      </label>
+      <input
+        autocomplete="email"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="reg-email"
+        name="email"
+        placeholder="email@example.com"
+        required=""
+        type="email"
+      />
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-password">
+       Mật khẩu
+      </label>
+      <input
+        autocomplete="new-password"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="reg-password"
+        name="password"
+        placeholder="••••••••"
+        required=""
+        type="password"
+      />
+     </div>
+     <div>
+      <label
+        class="block text-gray-700 font-semibold mb-1"
+        for="reg-password-confirm"
+      >
+       Xác nhận mật khẩu
+      </label>
+      <input
+        autocomplete="new-password"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+        id="reg-password-confirm"
+        name="passwordConfirm"
+        placeholder="••••••••"
+        required=""
+        type="password"
+      />
+     </div>
+     <button
+       class="w-full bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition"
+       type="submit"
+     >
+      Đăng ký
+     </button>
+    </form>
+   </div>
+  </div>
+  <!-- Nội dung chính -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+   <section class="text-center max-w-4xl mx-auto mb-8">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-indigo-700 mb-4 leading-tight">
+     Việc làm nổi bật
+    </h1>
+    <p class="text-indigo-600 text-lg sm:text-xl mb-8">
+     Tìm kiếm các công việc freelancer chất lượng trong nhiều lĩnh vực khác nhau.
+    </p>
+   </section>
+   <!-- Bộ lọc tìm kiếm -->
+   <section class="max-w-4xl mx-auto mb-12">
+    <form id="filter-form" class="bg-white rounded-lg shadow p-6 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 items-end">
+     <div class="flex-1 min-w-0">
+      <label for="keyword" class="block text-gray-700 font-semibold mb-1">Từ khóa</label>
+      <input
+        type="text"
+        id="keyword"
+        name="keyword"
+        placeholder="Nhập từ khóa, ví dụ: React, Marketing"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+      />
+     </div>
+     <div class="flex-1 min-w-0">
+      <label for="category" class="block text-gray-700 font-semibold mb-1">Danh mục</label>
+      <select
+        id="category"
+        name="category"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+      >
+       <option value="">Tất cả</option>
+       <option value="React.js">React.js</option>
+       <option value="Thiết kế">Thiết kế</option>
+       <option value="Viết lách">Viết lách</option>
+       <option value="Marketing">Marketing</option>
+       <option value="Flutter">Flutter</option>
+       <option value="SEO">SEO</option>
+      </select>
+     </div>
+     <div class="flex-1 min-w-0">
+      <label for="price" class="block text-gray-700 font-semibold mb-1">Khoảng giá</label>
+      <select
+        id="price"
+        name="price"
+        class="w-full border border-gray-300 rounded-md px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600"
+      >
+       <option value="">Tất cả</option>
+       <option value="0-50">Dưới $50</option>
+       <option value="50-150">$50 - $150</option>
+       <option value="150-300">$150 - $300</option>
+       <option value="300+">Trên $300</option>
+      </select>
+     </div>
+     <div class="flex space-x-2">
+      <button
+        type="submit"
+        class="bg-indigo-600 text-white font-semibold rounded-md px-6 py-2 hover:bg-indigo-700 transition"
+      >
+       Tìm kiếm
+      </button>
+      <button
+        type="button"
+        id="clear-filters"
+        class="bg-gray-300 text-gray-700 font-semibold rounded-md px-6 py-2 hover:bg-gray-400 transition"
+      >
+       Xóa bộ lọc
+      </button>
+     </div>
+    </form>
+   </section>
+   <!-- Danh sách việc làm -->
+   <section class="mb-20" id="jobs-list">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="jobs-container">
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="react.js javascript frontend"
+       data-category="React.js"
+       data-price-min="20"
+       data-price-max="30"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Lập trình viên React.js
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Tìm freelancer có kinh nghiệm React.js để phát triển giao diện người dùng cho ứng dụng web.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >React.js</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >JavaScript</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Frontend</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $20 - $30 / giờ</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-1"
+         id="job-detail-toggle-1"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-1"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Phát triển giao diện người dùng bằng
+        React.js, tích hợp API và tối ưu hiệu suất.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Thành thạo React.js, JavaScript, CSS, có kinh
+        nghiệm làm việc với RESTful API.
+       </p>
+       <p><strong>Thời gian:</strong> 3 tháng, làm việc remote.</p>
+       <p>
+        <strong>Liên hệ:</strong> email@example.com hoặc số điện thoại +84 123
+        456 789.
+       </p>
+      </div>
+     </article>
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="thiết kế logo branding"
+       data-category="Thiết kế"
+       data-price-min="150"
+       data-price-max="300"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Thiết kế logo thương hiệu
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Cần freelancer thiết kế logo chuyên nghiệp cho startup công nghệ mới.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Thiết kế</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Logo</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Branding</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $150 - $300</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-2"
+         id="job-detail-toggle-2"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-2"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Thiết kế logo độc đáo, phù hợp với
+        thương hiệu startup công nghệ.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Kinh nghiệm thiết kế logo, sử dụng thành thạo
+        các phần mềm đồ họa như Adobe Illustrator, Photoshop.
+       </p>
+       <p><strong>Thời gian:</strong> 1 tháng, có thể làm việc linh hoạt.</p>
+       <p>
+        <strong>Liên hệ:</strong> design@example.com hoặc số điện thoại +84 987
+        654 321.
+       </p>
+      </div>
+     </article>
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="viết lách blog công nghệ ai"
+       data-category="Viết lách"
+       data-price-min="50"
+       data-price-max="50"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Viết bài blog công nghệ
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Tìm freelancer viết bài blog chuyên sâu về công nghệ, AI và lập trình.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Viết lách</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Blog</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Công nghệ</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $50 / bài</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-3"
+         id="job-detail-toggle-3"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-3"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Viết bài blog chuyên sâu về các chủ đề
+        công nghệ, AI, lập trình.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Kỹ năng viết tốt, hiểu biết về công nghệ và
+        AI, có khả năng nghiên cứu và tổng hợp thông tin.
+       </p>
+       <p><strong>Thời gian:</strong> Linh hoạt, theo từng bài.</p>
+       <p>
+        <strong>Liên hệ:</strong> content@example.com hoặc số điện thoại +84 321
+        654 987.
+       </p>
+      </div>
+     </article>
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="marketing digital growth"
+       data-category="Marketing"
+       data-price-min="25"
+       data-price-max="40"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Marketing Digital cho startup
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Cần chuyên gia marketing digital để xây dựng chiến lược quảng cáo và
+        tăng trưởng khách hàng.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Marketing</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Digital</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Growth</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $25 - $40 / giờ</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-4"
+         id="job-detail-toggle-4"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-4"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Xây dựng và triển khai chiến lược
+        marketing digital, quảng cáo trên các nền tảng số.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Kinh nghiệm marketing digital, phân tích dữ
+        liệu, tối ưu hóa chiến dịch quảng cáo.
+       </p>
+       <p><strong>Thời gian:</strong> 6 tháng, làm việc remote.</p>
+       <p>
+        <strong>Liên hệ:</strong> marketing@example.com hoặc số điện thoại +84
+        456 789 123.
+       </p>
+      </div>
+     </article>
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="flutter mobile dart"
+       data-category="Flutter"
+       data-price-min="30"
+       data-price-max="45"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Phát triển ứng dụng mobile Flutter
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Freelancer có kinh nghiệm Flutter để phát triển ứng dụng đa nền tảng cho
+        dự án startup.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Flutter</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Mobile</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Dart</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $30 - $45 / giờ</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-5"
+         id="job-detail-toggle-5"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-5"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Phát triển ứng dụng di động đa nền tảng
+        sử dụng Flutter, tích hợp API và tối ưu UI/UX.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Kinh nghiệm Flutter, Dart, hiểu biết về thiết
+        kế responsive và quản lý trạng thái.
+       </p>
+       <p><strong>Thời gian:</strong> 4 tháng, làm việc remote.</p>
+       <p>
+        <strong>Liên hệ:</strong> flutterdev@example.com hoặc số điện thoại +84
+        789 123 456.
+       </p>
+      </div>
+     </article>
+     <article
+       class="job-item bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition"
+       data-keywords="seo content marketing"
+       data-category="SEO"
+       data-price-min="100"
+       data-price-max="200"
+     >
+      <div>
+       <h3 class="text-xl font-semibold text-indigo-800 mb-2">
+        Tư vấn SEO & Content Marketing
+       </h3>
+       <p class="text-gray-600 mb-3 line-clamp-3">
+        Freelancer chuyên SEO giúp tăng thứ hạng website và tối ưu nội dung
+        marketing.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >SEO</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Content</span
+        >
+        <span
+          class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded"
+          >Marketing</span
+        >
+       </div>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-indigo-600 font-semibold space-y-2 sm:space-y-0"
+      >
+       <span>Giá: $100 - $200</span>
+       <button
+         type="button"
+         class="text-indigo-600 hover:underline focus:outline-none"
+         aria-expanded="false"
+         aria-controls="job-detail-6"
+         id="job-detail-toggle-6"
+       >
+        Xem chi tiết
+       </button>
+      </div>
+      <div
+        class="mt-4 text-gray-700 text-sm hidden"
+        id="job-detail-6"
+        aria-hidden="true"
+      >
+       <p>
+        <strong>Mô tả công việc:</strong> Tư vấn SEO, tối ưu hóa nội dung và
+        chiến lược marketing để tăng thứ hạng website.
+       </p>
+       <p>
+        <strong>Yêu cầu:</strong> Kinh nghiệm SEO, phân tích từ khóa, xây dựng
+        nội dung chất lượng.
+       </p>
+       <p><strong>Thời gian:</strong> 3 tháng, làm việc linh hoạt.</p>
+       <p>
+        <strong>Liên hệ:</strong> seoexpert@example.com hoặc số điện thoại +84
+        654 321 987.
+       </p>
+      </div>
+     </article>
+    </div>
+   </section>
+  </main>
+  <!-- Chân trang -->
+  <footer class="bg-white border-t border-indigo-200">
+   <div
+     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8"
+   >
+    <div>
+     <a class="flex items-center space-x-2 mb-4" href="../index.html">
+      <img
+        alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng"
+        class="h-10 w-10 rounded-md"
+        height="40"
+        src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg"
+        width="40"
+      />
+      <span class="text-indigo-600 font-bold text-xl select-none">FreeHub</span>
+     </a>
+     <p class="text-gray-600 max-w-xs">
+      Kết nối freelancer và khách hàng dễ dàng, nhanh chóng và hiệu quả.
+     </p>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">Điều hướng</h3>
+     <ul class="space-y-2 text-gray-700">
+      <li>
+       <a class="hover:text-indigo-600 transition" href="../index.html"
+         >Trang chủ</a
+       >
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="./viec-lam.html"
+         >Việc làm</a
+       >
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="./freelancer.html"
+         >Freelancer</a
+       >
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="./dang-du-an.html"
+         >Đăng dự án</a
+       >
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">Liên hệ</h3>
+     <address class="not-italic text-gray-700 space-y-2">
+      <p>
+       <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>
+       123 Đường Freelance, Quận 1, TP.HCM
+      </p>
+      <p>
+       <i class="fas fa-phone mr-2 text-indigo-600"></i>+84 123 456 789
+      </p>
+      <p>
+       <i class="fas fa-envelope mr-2 text-indigo-600"></i>support@freehub.vn
+      </p>
+     </address>
+     <div class="flex space-x-4 mt-4 text-indigo-600">
+      <a aria-label="Facebook" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-twitter fa-lg"></i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-linkedin fa-lg"></i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-instagram fa-lg"></i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="border-t border-indigo-200 text-center text-gray-500 py-4 text-sm">
+    © 2024 FreeHub. Bản quyền thuộc về FreeHub.
+   </div>
+  </footer>
+ </body>
+ <script src="../js/main.js"></script>
+</html>
